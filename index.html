@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EncuestasApp | Login y Cargue</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>EncuestasApp</h1>
+    <div id="sessionInfo" class="session-info hidden">
+      <span id="userLabel"></span>
+      <button id="logoutBtn" class="btn btn-outline">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="loginSection" class="card">
+      <h2>Inicio de sesión</h2>
+      <p class="muted">Ingresa para administrar y cargar encuestas.</p>
+      <form id="loginForm" class="form-grid">
+        <label>
+          Usuario
+          <input type="text" id="username" placeholder="admin" required />
+        </label>
+        <label>
+          Contraseña
+          <input type="password" id="password" placeholder="••••••" required />
+        </label>
+        <button class="btn" type="submit">Ingresar</button>
+      </form>
+      <small class="hint">Demo: <b>admin / 123456</b></small>
+      <p id="loginMessage" class="message"></p>
+    </section>
+
+    <section id="appSection" class="hidden">
+      <div class="card">
+        <h2>Nueva respuesta de encuesta</h2>
+        <form id="surveyForm" class="form-grid two-cols">
+          <label>
+            Nombre
+            <input type="text" id="name" required />
+          </label>
+          <label>
+            Edad
+            <input type="number" id="age" min="1" max="120" required />
+          </label>
+          <label>
+            Ciudad
+            <input type="text" id="city" required />
+          </label>
+          <label>
+            Satisfacción (1 a 5)
+            <input type="number" id="score" min="1" max="5" required />
+          </label>
+          <label class="full-width">
+            Comentarios
+            <textarea id="comments" rows="3" placeholder="Opcional"></textarea>
+          </label>
+          <button class="btn" type="submit">Guardar respuesta</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Cargue de datos</h2>
+        <p class="muted">Sube archivo <b>.json</b> o <b>.csv</b> con columnas: name, age, city, score, comments.</p>
+        <input type="file" id="fileInput" accept=".json,.csv" />
+        <p id="uploadMessage" class="message"></p>
+      </div>
+
+      <div class="card">
+        <h2>Resumen</h2>
+        <div class="stats">
+          <div class="stat"><span>Total respuestas</span><strong id="totalCount">0</strong></div>
+          <div class="stat"><span>Edad promedio</span><strong id="avgAge">0</strong></div>
+          <div class="stat"><span>Satisfacción promedio</span><strong id="avgScore">0</strong></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Datos cargados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Ciudad</th>
+                <th>Satisfacción</th>
+                <th>Comentarios</th>
+              </tr>
+            </thead>
+            <tbody id="surveyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
